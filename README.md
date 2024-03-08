@@ -22,7 +22,7 @@ Please note that the code is minimal and does not adhere to many of the best pra
 
 - [@wonrhee3](https://www.github.com/wonrhee3) Won J. Rhee
 
-## Test Instructions
+## Testing Instructions
 
 Only a single endpoint is of value, ` Simply send a`GET`request with`state`and`city`as query parameters to`/homes` endpoint.
 
