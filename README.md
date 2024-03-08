@@ -15,7 +15,7 @@ Please note that the code is minimal and does not adhere to many of the best pra
 5.  Navigate to the `trulia.com` site.
 6.  Perform a search on the Trulia site using `trulia.com/{stateAbbreviation}/{cityName}`.
 7.  Use the ZendRows external service to bypass anti-scraping mechanisms.
-8.  Navigate to the third page and gather home listings (scrolling is flaky).
+8.  Navigate from page 1 through 3, and gather home listings (scrolling is flaky).
 9.  Merge the results and return them as a JSON response.
 
 ## Authors
