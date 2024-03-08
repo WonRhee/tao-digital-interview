@@ -7,16 +7,22 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
-const zenrowsKey = process.env.ZENROWS_KEY || 'fd002cb32a7f39db861135a38afe3b52a87d6a4a'
+const zenrowsKey = process.env.ZENROWS_KEY
+const browserlessKey = process.env.BROWERLESS_KEY
+
+interface SearchParam {
+  state: string;
+  city: string;
+}
 
 app.get("/", async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.send("Hello Tao! By Won Rhee");
+  res.send(JSON.stringify({ "message": "Hello Tao! By Won Rhee" }));
 });
 
 app.get("/homes", async (req, res) => {
-  const searchParam: SearchParam = { state: req.query.state as string, city: req.query.city as string }
-  const result = await scrape(searchParam)
+  const searchParam: SearchParam = { state: req.query.state as string, city: req.query.city as string };
+  const result = await scrape(searchParam);
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(result));
 });
@@ -25,17 +31,16 @@ app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
 
-interface SearchParam {
-  state: string;
-  city: string;
-}
-
 const scrape = async ({ state, city }: SearchParam) => {
   // Launch the browser and open a new blank page
-  const browser = await puppeteer.launch({
-    headless: true,
-    // userDataDir: "./user_data",
+  const browser = await puppeteer.connect({
+    browserWSEndpoint: `wss://chrome.browserless.io?token=${browserlessKey}`,
   });
+
+  // const browser = await puppeteer.launch({
+  //   headless: true,
+  //   // userDataDir: "./user_data",
+  // });
   const page = await browser.newPage();
 
   // Set screen size
@@ -124,7 +129,7 @@ const trulia = async (searchParam: SearchParam, pageNum?: number) => {
   searchUrl += pageNum > 1 ? `/${pageNum}_p` : '';
 
   // Use external proxy to avoid captcha and other security mechanisms
-  const client = new ZenRows("fd002cb32a7f39db861135a38afe3b52a87d6a4a");
+  const client = new ZenRows(zenrowsKey);
   const { data } = await client.get(searchUrl, {
     'js_render': true,
     'premium_proxy': true,
