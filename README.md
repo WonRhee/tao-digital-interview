@@ -24,12 +24,14 @@ Please note that the code is minimal and does not adhere to many of the best pra
 
 ## Testing Instructions
 
+- https://tao-scrape.azurewebsites.net/homes?state=TX&city=houston
+
 Only a single endpoint is of value, ` Simply send a`GET`request with`state`and`city`as query parameters to`/homes` endpoint.
 
 For example,
 
 ```
-GET https://tao-won.azurewebsites.net/homes?state=ny&city=anaheim
+GET https://tao-scrape.azurewebsites.net/homes?state=ny&city=anaheim
 ```
 
 Postman or simply using browser to the above endpoint should work. It may take up to a minute to respond.
