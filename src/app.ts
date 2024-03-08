@@ -15,11 +15,10 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/homes", async (req, res) => {
-  // const searchParam: SearchParam = { state: req.query.state as string, city: req.query.city as string }
-  // const result = await scrape(searchParam)
+  const searchParam: SearchParam = { state: req.query.state as string, city: req.query.city as string }
+  const result = await scrape(searchParam)
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify([]))
-  // res.send(JSON.stringify(result));
+  res.send(JSON.stringify(result));
 });
 
 app.listen(port, () => {
