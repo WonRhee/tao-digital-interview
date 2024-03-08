@@ -26,7 +26,7 @@ Please note that the code is minimal and does not adhere to many of the best pra
 
 - https://tao-scrape.azurewebsites.net/homes?state=TX&city=houston
 
-Only a single endpoint is of value, ` Simply send a`GET`request with`state`and`city`as query parameters to`/homes` endpoint.
+Only a single endpoint is of value, Simply send a`GET`request with`state`and`city`as query parameters to`/homes` endpoint.
 
 For example,
 
