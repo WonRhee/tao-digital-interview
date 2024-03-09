@@ -31,7 +31,7 @@ Only a single endpoint is of value, Simply send a`GET`request with`state`and`cit
 For example,
 
 ```
-GET https://tao-scrape.azurewebsites.net/homes?state=ny&city=anaheim
+GET https://tao-scrape.azurewebsites.net/homes?state=ca&city=anaheim
 ```
 
 Postman or simply using browser to the above endpoint should work. It may take up to a minute to respond.
